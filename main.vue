@@ -7,24 +7,37 @@
 
 <script setup>
 import axios from '@/api/index.js';
+import realAxios from 'axios'
 import { onMounted } from 'vue'
 
 
 function handleClick() { 
-    axios.get('/api/posts/1').then(
+    const CancelToken = realAxios.CancelToken
+    const source = CancelToken.source();
+
+
+    axios.get('/api/posts/1', {
+        cancelToken: source.token
+    }).then(
         (data) => {
             console.log(data.data);
         },
         (err) => {
-            console.log(err);
+            if (axios.isCancel(err)) {
+                console.log('request canceled', err.message)
+            } else { 
+                console.log(err);
+            }
+
         }
     );
-    axios({
+    // source.cancel('cancel')
+    /* axios({
         method: 'get',
         url: '/api/posts/1',
     }).then(response => { 
         console.log('response', response.data);
-    })
+    }) */
 }
 
 onMounted(() => {
