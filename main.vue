@@ -1,7 +1,13 @@
 
 <template>
   <div class="wrap">
-    <el-button type="success" @click="handleClick" class="button">Info</el-button>
+    <el-button
+      type="success"
+      class="button"
+      @click="handleClick"
+    >
+      Info
+    </el-button>
   </div>
 </template>
 
@@ -12,27 +18,27 @@ import { onMounted } from 'vue'
 
 
 function handleClick() { 
-    const CancelToken = realAxios.CancelToken
-    const source = CancelToken.source();
+  const CancelToken = realAxios.CancelToken
+  const source = CancelToken.source();
 
 
-    axios.get('/api/posts/1', {
-        cancelToken: source.token
-    }).then(
-        (data) => {
-            console.log(data.data);
-        },
-        (err) => {
-            if (axios.isCancel(err)) {
-                console.log('request canceled', err.message)
-            } else { 
-                console.log(err);
-            }
+  axios.get('/api/posts/1', {
+    cancelToken: source.token
+  }).then(
+    (data) => {
+      console.log(data.data);
+    },
+    (err) => {
+      if (axios.isCancel(err)) {
+        console.log('request canceled', err.message)
+      } else { 
+        console.log(err);
+      }
 
-        }
-    );
-    // source.cancel('cancel')
-    /* axios({
+    }
+  );
+  // source.cancel('cancel')
+  /* axios({
         method: 'get',
         url: '/api/posts/1',
     }).then(response => { 
@@ -41,7 +47,7 @@ function handleClick() {
 }
 
 onMounted(() => {
-    // console.log('哈哈')
+  // console.log('哈哈')
 })
 </script>
 

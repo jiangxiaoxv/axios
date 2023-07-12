@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import vuejs from '@vitejs/plugin-vue';
 import path from 'path';
+import eslintPlugin from 'vite-plugin-eslint';
 
 export default defineConfig({
   resolve: {
@@ -18,5 +19,18 @@ export default defineConfig({
       },
     },
   },
-  plugins: [vuejs()],
+  plugins: [
+    vuejs(),
+    eslintPlugin({
+      cache: false,
+      include: [
+        './**/*.js',
+        './**/*.vue',
+        './**/*.html',
+        './**/*.css',
+        './**/*.jsx',
+      ],
+      exclude: ['./node_modules/**'],
+    }),
+  ],
 });

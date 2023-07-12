@@ -18,7 +18,7 @@ const requestIntance = axios.create({
   responseType: 'json', // 表示浏览器将要响应的数据类型
   transformRequest: [
     (data, headers) => {
-      if (headers && headrs['Content-type'] === 'application/json') {
+      if (headers && headers['Content-type'] === 'application/json') {
         return JSON.stringify(data);
       }
       return data;
