@@ -1,64 +1,57 @@
 {
   "editor.fontSize": 16,
-  
-  "[vue]": {
-      "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
-  },
-  
-  "[json]": {
-      "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true,
-      "source.fixAll.styleLint": true 
-  },
-  "explorer.confirmDelete": false,
-  "workbench.editorAssociations": {
-      "*.txt": "default"
-  },
-  "window.nativeTabs": true,
-  "beautify.config": {
-      "indent_size": 2
-  },
-  "path-intellisense.mappings": {
-      "@": "${workspaceRoot}/src/"
-  },
-  "editor.quickSuggestionsDelay": 0,
-  "workbench.colorCustomizations": {
-  },
-  "editor.detectIndentation": false,
-  "editor.formatOnSave": true,
-  "eslint.validate": [
-      "javascript",
-      "javascriptreact",
-      "vue",
-      "html"
-  ],
-  // #使用带引号替代双引号 
-  "prettier.singleQuote": true,
-  "editor.formatOnType": true,
-  "eslint.codeAction.showDocumentation": {
-      "enable": true
-  },
-  //setting.json文件
-  "[javascript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "workbench.tree.indent": 24,
-  "vetur.useWorkspaceDependencies": true,
-  "vs-code-prettier-eslint.prettierLast": true,
-  "eslint.workingDirectories": [
-
-  ],
-  "editor.snippetSuggestions": "top",
-  // "eslint.codeActionsOnSave.rules": null,
+  "window.nativeTabs": true, // 合并所有窗口
   "editor.tabSize": 2,
-  "eslint.execArgv": null,
- 
+
+  // .vue 文件 template格式化支持，并使用js-beautify-html 插件
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  "vetur.format.defaultFormatter.js": "vscode-typescript",
+  // js-beautify-html 配置，属性强制换行
+  "vetur.format.defaultFormatterOptions": {
+    "js-beautify-html": {
+      "wrap_attributes": "auto"
+    }
+  },
+  // 根据文件后缀名定义vue文件
+  "files.associations": {
+    "*.vue": "vue"
+  },
+  // 开启eslint支持
+  "prettier.eslintIntegration": true,
+  "prettier.singleQuote": true, // 使用单引号
+  "prettier.semi": false, // 结尾不加分号
+  "prettier.tabWidth": 2,
+  // 配置eslint检查的文件类型
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "html",
+    "vue",
+    "typescript",
+    "typescriptreact"
+  ],
+  // 保存时eslint自动修复错误
+
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // vscode代码格式化按照的是 esbenp.prettier-vscode
+  "editor.formatOnSave": true, // 保存是格式化, vue项目关闭此功能，全局水用保存自动格式化功能
+  "editor.suggestSelection": "first",
+  "editor.formatOnPaste": true,
+  "editor.cursorBlinking": "smooth",
+  "editor.snippetSuggestions": "top",
+
+  "[vue]": {
+    // "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "eslint.format.enable": true,
+  "vue.codeActions.enabled": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": false,
+    "source.fixAll.eslint": true,
+    "source.organizeImports": false
+  },
+  "vetur.ignoreProjectWarning": true
 }

@@ -1,10 +1,10 @@
-import { createApp } from 'vue';
-import App from './main.vue';
-import ElementPlus from 'element-plus';
-import 'element-plus/dist/index.css';
+import { createApp } from 'vue'
+import App from './main.vue'
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
 
-const app = createApp(App);
+const app = createApp(App)
 
-app.use(ElementPlus);
+app.use(ElementPlus)
 
-app.mount('#app');
+app.mount('#app')

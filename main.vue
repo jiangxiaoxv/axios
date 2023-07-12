@@ -1,42 +1,38 @@
-
 <template>
   <div class="wrap">
-    <el-button
-      type="success"
-      class="button"
-      @click="handleClick"
-    >
+    <el-button type="success" class="button" @click="handleClick">
       Info
     </el-button>
   </div>
 </template>
 
 <script setup>
-import axios from '@/api/index.js';
+import axios from '@/api/index.js'
 import realAxios from 'axios'
 import { onMounted } from 'vue'
 
+const a = 1
 
-function handleClick() { 
+function handleClick() {
   const CancelToken = realAxios.CancelToken
-  const source = CancelToken.source();
+  const source = CancelToken.source()
 
-
-  axios.get('/api/posts/1', {
-    cancelToken: source.token
-  }).then(
-    (data) => {
-      console.log(data.data);
-    },
-    (err) => {
-      if (axios.isCancel(err)) {
-        console.log('request canceled', err.message)
-      } else { 
-        console.log(err);
+  axios
+    .get('/api/posts/1', {
+      cancelToken: source.token,
+    })
+    .then(
+      (data) => {
+        console.log(data.data)
+      },
+      (err) => {
+        if (axios.isCancel(err)) {
+          console.log('request canceled', err.message)
+        } else {
+          console.log(err)
+        }
       }
-
-    }
-  );
+    )
   // source.cancel('cancel')
   /* axios({
         method: 'get',
@@ -52,19 +48,18 @@ onMounted(() => {
 </script>
 
 <style scoped lang="less">
- .wrap {
-    height: 100vh;
-    width: 100vw;
-    background-color: aqua ;
+.wrap {
+  height: 100vh;
+  width: 100vw;
+  background-color: aqua;
 
-    .button {
-
-    }
- }
+  .button {
+  }
+}
 </style>
 <style>
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 </style>

@@ -30,5 +30,16 @@ module.exports = {
     semi: [0],
     'vue/comment-directive': 'off',
     'vue/multi-word-component-names': 0,
+    'vue/max-attributes-per-line': [
+      0,
+      {
+        singleline: {
+          max: 1,
+        },
+        multiline: {
+          max: 1,
+        },
+      },
+    ],
   },
-};
+}

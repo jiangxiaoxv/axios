@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'
 
 const requestIntance = axios.create({
   baseURL: '',
@@ -19,38 +19,38 @@ const requestIntance = axios.create({
   transformRequest: [
     (data, headers) => {
       if (headers && headers['Content-type'] === 'application/json') {
-        return JSON.stringify(data);
+        return JSON.stringify(data)
       }
-      return data;
+      return data
     },
   ],
   /* // 可以自定义跑出错误的http code
   validateStatus: function (status) {
     return status < 500;
   }, */
-});
+})
 
 const requestInterceptors = requestIntance.interceptors.request.use(
   function (config) {
     // 再发送请求之前做些什么
 
-    return config;
+    return config
   },
   function (error) {
-    return Promise.reject(error);
+    return Promise.reject(error)
   }
-);
+)
 
 // 取消拦截器
 // requestIntance.interceptors.request.eject(requestInterceptors);
 
 requestIntance.interceptors.response.use(
   function (response) {
-    return response;
+    return response
   },
   function (error) {
-    return Promise.reject(error);
+    return Promise.reject(error)
   }
-);
+)
 
-export default axios;
+export default axios
