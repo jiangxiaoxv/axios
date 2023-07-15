@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite';
-import vuejs from '@vitejs/plugin-vue';
-import path from 'path';
-import eslintPlugin from 'vite-plugin-eslint';
+import { defineConfig } from 'vite'
+import vuejs from '@vitejs/plugin-vue'
+import path from 'path'
+import eslintPlugin from 'vite-plugin-eslint'
 
 export default defineConfig({
   resolve: {
@@ -19,6 +19,15 @@ export default defineConfig({
       },
     },
   },
+  css: {
+    postcss: {
+      plugins: [
+        require('postcss-import'),
+        require('tailwindcss'),
+        require('autoprefixer'),
+      ],
+    },
+  },
   plugins: [
     vuejs(),
     eslintPlugin({
@@ -33,4 +42,4 @@ export default defineConfig({
       exclude: ['./node_modules/**'],
     }),
   ],
-});
+})

@@ -1,17 +1,42 @@
 <template>
   <div class="wrap">
-    <el-button type="success" class="button" @click="handleClick">
-      Info
+    <el-button class="btn-primary" @click="handleClick">
+      {{ b }}
     </el-button>
+    <h1 class="tw-w-200 tw-bg-pink-50">我正在学习tailwind</h1>
+    <div
+      :class="[
+        'lg:tw-bg-pink-400',
+        'tw-h-12 tw-w-12',
+        'md:tw-bg-green-500 xl:tw-bg-yellow-400 lg:tw-w-50',
+      ]"
+      @click="print"
+    >
+      空div
+    </div>
+    <div
+      :class="['tw-bg-red-500']"
+      class="tw-w-50 tw-h-20 tw-rounded-4xl lg:tw-w-[400px] content-auto"
+    >
+      我是overhidder
+    </div>
+    <div class="card">
+      <h3>wohaha</h3>
+    </div>
   </div>
 </template>
 
 <script setup>
 import axios from '@/api/index.js'
 import realAxios from 'axios'
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 
-const a = 1
+// const a = 1
+const b = ref('my button')
+
+function print() {
+  console.log('wocao')
+}
 
 function handleClick() {
   const CancelToken = realAxios.CancelToken
@@ -43,17 +68,20 @@ function handleClick() {
 }
 
 onMounted(() => {
-  // console.log('哈哈')
+  // console.log(a)
 })
 </script>
 
 <style scoped lang="less">
 .wrap {
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  min-width: 100vw;
   background-color: aqua;
 
   .button {
+  }
+
+  .test-div {
   }
 }
 </style>
@@ -61,5 +89,8 @@ onMounted(() => {
 * {
   margin: 0;
   padding: 0;
+}
+body {
+  @apply tw-h-full tw-w-full;
 }
 </style>

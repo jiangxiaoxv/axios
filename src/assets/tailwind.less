@@ -1,0 +1,36 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    @apply tw-text-xl;
+  }
+}
+
+@layer components {
+  /* 将基础类组合抽取出来 */
+  .btn-primary {
+    @apply tw-py-2 tw-px-4 tw-bg-blue-500 tw-text-white tw-font-semibold tw-rounded-lg tw-shadow-md hover:tw-bg-blue-700 focus:tw-outline-none focus:tw-ring-2 focus:tw-ring-blue-400 focus:tw-ring-opacity-75;
+  }
+  .card {
+    background-color: theme('colors.gray.700');
+    box-shadow: theme('boxShadow.xl');
+    border: 1px solid theme('colors.white');
+    padding: 0;
+    @apply tw-w-50 tw-h-50 tw-mt-1;
+  }
+}
+
+@layer utilities {
+  .content-auto {
+    // content-visibility: auto;
+    display: inline-block;
+    padding: 0;
+  }
+}

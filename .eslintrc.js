@@ -24,12 +24,25 @@ module.exports = {
   plugins: ['vue'],
 
   rules: {
-    'no-unused-vars': 'warn',
+    'no-unused-vars': [1],
     quotes: ['error', 'single'],
     indent: ['error', 2],
     semi: [0],
     'vue/comment-directive': 'off',
     'vue/multi-word-component-names': 0,
+    'vue/html-self-closing': [
+      'error',
+      {
+        html: {
+          void: 'never',
+          normal: 'never',
+          component: 'always',
+        },
+        svg: 'always',
+        math: 'always',
+      },
+    ],
+    'vue/html-closing-bracket-newline': ['error'],
     'vue/max-attributes-per-line': [
       0,
       {
@@ -41,5 +54,6 @@ module.exports = {
         },
       },
     ],
+    'vue/singleline-html-element-content-newline': [0],
   },
 }
